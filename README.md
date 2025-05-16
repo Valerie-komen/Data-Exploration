@@ -1,10 +1,18 @@
 # Data-Exploration
 Using Covid 19 Dataset
-/* 
 
-Skills used: Joins, CTE's, Temp Tables, Windows Functions, Aggregate Functions, Creating Views, Converting Data Types
+### Skills used: 
+1. Joins
+2. CTE's
+3. Temp Tables
+4. Windows Functions
+5. Aggregate Functions
+6. Creating Views
+7. Converting Data Types
 
-*/
+### Tools
+Mysql server
+
 
 ```sql
 SELECT *
@@ -36,7 +44,7 @@ ORDER BY 1,2
 ```sql
 SELECT Location, date, Population, total_cases,  (total_cases/population)*100 AS PercentPopulationInfected
 FROM PortfolioProject..CovidDeaths
-WWHERE location like '%states%'
+WHERE location like '%states%'
 ORDER BY 1,2
 ```
 
@@ -85,7 +93,7 @@ ORDER BY 1,2
 
 
 #### Total Population vs Vaccinations
-##### Shows Percentage of Population that has recieved at least one Covid Vaccine
+##### Shows Percentage of Population that has received at least one Covid Vaccine
 ```sql
 SELECT dea.continent, dea.location, dea.date, dea.population, vac.new_vaccinations, SUM(CONVERT(int,vac.new_vaccinations)) OVER (Partition by dea.Location Order by dea.location, dea.Date) AS RollingPeopleVaccinated, (RollingPeopleVaccinated/population)*100
 From PortfolioProject..CovidDeaths dea
